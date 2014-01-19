@@ -6,10 +6,9 @@ ocamlc -bin-annot -c lib/v1.mli
 FILES="lib/META lib/v1.mli lib/v1.cmi lib/v1.cmti"
 
 if [ "$WITH_LWT" != "" ]; then
-  ocamlfind ocamlc -package lwt,io-page,cstruct,ipaddr -bin-annot -I lib -c lib/v1_lwt.mli
-  FILES="${FILES} lib/v1_lwt.cmi lib/v1_lwt.mli lib/v1_lwt.cmti"
+  ocamlfind ocamlc -package lwt,io-page,cstruct,ipaddr -bin-annot -I lib -c lib/V1_LWT.mli
+  FILES="${FILES} lib/V1_LWT.cmi lib/V1_LWT.mli lib/V1_LWT.cmti"
 fi
-
 
 if [ "$1" = "true" ]; then
   ocamlfind remove mirage-types || true
