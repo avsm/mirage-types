@@ -1,8 +1,17 @@
 #!/bin/sh -ex
 
+WITH_LWT=`ocamlfind query lwt 2>/dev/null || echo ""`
+
 ocamlc -bin-annot -c lib/v1.mli
+FILES="lib/META lib/v1.mli lib/v1.cmi lib/v1.cmti"
+
+if [ "$WITH_LWT" != "" ]; then
+  ocamlfind ocamlc -package lwt,io-page,cstruct,ipaddr -bin-annot -I lib -c lib/v1_lwt.mli
+  FILES="${FILES} lib/v1_lwt.cmi lib/v1_lwt.mli lib/v1_lwt.cmti"
+fi
+
 
 if [ "$1" = "true" ]; then
   ocamlfind remove mirage-types || true
-  ocamlfind install mirage-types lib/META lib/v1.cmi lib/v1.cmti
+  ocamlfind install mirage-types ${FILES}
 fi
