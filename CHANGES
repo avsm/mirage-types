@@ -1,6 +1,6 @@
 1.1.0 (trunk):
 * Add V1_LWT to cover the Lwt specialization of the modules.
-* Add ETHIF, IPV4, UDPV4.
+* Add ETHIF, IPV4, UDPV4, TCPV4.
 
 1.0.0 (24-Dec-2013):
 * Simplify build system to not use `ocamlbuild`.
