@@ -1,6 +1,6 @@
 #!/bin/sh -ex
 
-WITH_LWT=`ocamlfind query lwt 2>/dev/null || echo ""`
+WITH_LWT=`ocamlfind query lwt cstruct ipaddr 2>/dev/null || echo ""`
 
 ocamlc -bin-annot -c lib/v1.mli
 FILES="lib/META lib/v1.mli lib/v1.cmi lib/v1.cmti"
